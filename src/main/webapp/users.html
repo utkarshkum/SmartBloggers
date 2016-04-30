@@ -1,0 +1,49 @@
+	<div ng-controller="UserController">
+		<div ng-show="loading" ng-init="loading = true">
+			<img src="images/loading.gif">
+		</div>
+		<table>
+			<theader>
+			<tr>
+				<td>NAME</td>
+				<td>EMAIL_ID</td>
+				<td>PASSWORD</td>
+			</tr>
+			</theader>
+			<tbody>
+				<tr ng-repeat="user in users">
+					<td>{{ user.userName }}</td>
+					<td>{{ user.emailId }}</td>
+					<td>{{ user.password }}</td>
+					<td><a href='#' ng-click="editUser(user)">Edit</a></td>
+				</tr>
+			</tbody>
+		</table>
+		{{error}}
+		<h1>Showing {{users.length}} users</h1>
+
+		<button ng-click="showAddUserForm = true">Add User</button>
+		<div ng-show="showAddUserForm" ng-init="showAddUserForm=false">
+			<form name="userForm">
+				<tbody>
+					<tr>
+						<td>NAME:</td>
+						<td><input type="text" ng-model="user.userName" /></td>
+					</tr>
+					<tr>
+						<td>EMAIL ID:</td>
+						<td><input type="email" ng-model="user.emailId" /></td>
+					</tr>
+					<tr>
+						<td>PASSWORD:</td>
+						<td><input type="password" ng-model="user.password" /></td>
+					</tr>
+
+				</tbody>
+				<button ng-click="addUser(user)">Submit</button>
+				<button value="Update" ng-show="showEditForm"
+					ng-click="updateUser(user)">Update</button>
+				<button ng-click="showAddUserForm = false">Cancel</button>
+			</form>
+		</div>
+	</div>
