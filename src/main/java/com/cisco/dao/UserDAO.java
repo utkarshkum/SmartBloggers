@@ -21,6 +21,8 @@ public class UserDAO {
 	}
 	
 	public User getUser(Integer id) {
+		Datastore dataStore = ServicesFactory.getMongoDB();
+
 		return null;
 	}
 		
@@ -35,11 +37,14 @@ public class UserDAO {
 		dataStore.save(user);
 	}
 	
-	public void updateUser(User u) {
-
+	public void updateUser(User user) {
+		Datastore dataStore = ServicesFactory.getMongoDB();
+		//dataStore.update(user,1	);
 	}
 	
-	public boolean deleteUser(int id) {
+	public boolean deleteUser(User user) {
+		Datastore dataStore = ServicesFactory.getMongoDB();
+		dataStore.delete(user);	
 		return true;
 	}
 	

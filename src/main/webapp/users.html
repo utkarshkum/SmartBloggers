@@ -2,25 +2,15 @@
 		<div ng-show="loading" ng-init="loading = true">
 			<img src="images/loading.gif">
 		</div>
-		<table>
-			<theader>
-			<tr>
-				<td>NAME</td>
-				<td>EMAIL_ID</td>
-				<td>PASSWORD</td>
-			</tr>
-			</theader>
-			<tbody>
-				<tr ng-repeat="user in users">
-					<td>{{ user.userName }}</td>
-					<td>{{ user.emailId }}</td>
-					<td>{{ user.password }}</td>
-					<td><a href='#' ng-click="editUser(user)">Edit</a></td>
-				</tr>
-			</tbody>
-		</table>
-		{{error}}
-		<h1>Showing {{users.length}} users</h1>
+
+		
+			<div class="user panel panel-default" ng-repeat="user in users | filter:searchFor">
+		<div class="panel-heading">
+			{{ user.userName }}
+		</div>
+		<div class="panel-body">
+		{{ user.emailId }}</div>
+	</div>
 
 		<button ng-click="showAddUserForm = true">Add User</button>
 		<div ng-show="showAddUserForm" ng-init="showAddUserForm=false">

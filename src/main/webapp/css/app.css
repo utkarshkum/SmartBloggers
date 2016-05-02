@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+div.blog {
+	float: left;
+	width: 300px;
+	margin-right: 10px;
+	min-height: 200px;
+}
+
+div.heading {
+	float: left;
+	width: 100px;
+	margin-right: 10px;
+	min-height: 10px;
+	align: center;
+}
+
+div.user {
+	float: left;
+	width: 200px;
+	margin-right: 10px;
+	min-height: 50px;
+}
+div.mybody {
+  padding: 50px;
+}
+
+input[type=text] {
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+}
+
+textarea {
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+}
+
+

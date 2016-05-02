@@ -3,20 +3,52 @@ package com.cisco.model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+@Entity("blogs")
+@Indexes(
+    @Index(value = "blogName", fields = @Field("blogName"))
+)
 public class Blog {
 	
-	private Integer blogId;
-	private String title;
+	@Id
+	private ObjectId blogId;
+	private String blogName;
 	private String content;
-	private List<String> tag;
+	private String tag;
+	
+	public Blog() {
+		
+	}
+	
+	public Blog(String blogName, String content, String tag) {
+		super();
+		this.blogName = blogName;
+		this.content = content;
+		this.tag = tag;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
 	private Timestamp postDate;
 	
 	@JsonIgnore
-	@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="userId")
+	@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 	private User user;
 	
 	public User getUser() {
@@ -25,19 +57,21 @@ public class Blog {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Integer getBlogId() {
+
+	public ObjectId getBlogId() {
 		return blogId;
 	}
-	public void setBlogId(Integer blogId) {
+	public void setBlogId(ObjectId blogId) {
 		this.blogId = blogId;
 	}
-	public String getTitle() {
-		return title;
+	
+	public String getBlogName() {
+		return blogName;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBlogName(String blogName) {
+		this.blogName = blogName;
 	}
-
+	
 	public String getContent() {
 		return content;
 	}
@@ -51,18 +85,14 @@ public class Blog {
 	public void setPostDate(Timestamp postDate) {
 		this.postDate = postDate;
 	}
-	public List<String> getTag() {
-		return tag;
-	}
-	public void setTag(List<String> tag) {
-		this.tag = tag;
-	}
+
 	
 	@Override
 	public String toString() {
-		return "Blog [blogId=" + blogId + ", title=" + title + ", content="
-				+ content + ", tag=" + tag + ", postDate=" + postDate
-				+ ", user=" + user + "]";
+		return "Blog [blogId=" + blogId + ", blogName=" + blogName
+				+ ", content=" + content + ", tag=" + tag + ", postDate="
+				+ postDate + ", user=" + user + "]";
 	}
+	
 	
 }

@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.cisco.dao.BlogDAO;
 import com.cisco.dao.UserDAO;
 import com.cisco.model.User;
 
@@ -26,7 +27,7 @@ public class UserTest {
 		User user = new User("utkarsh_kumar_1","utkakuma1@gmail.com","uk");
 		userDAO.createUser(user);
 	}
-	
+		
 	@Test
 	public void listUserTest() {
 		UserDAO userDAO = UserDAO.getInstance();

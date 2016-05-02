@@ -51,11 +51,10 @@ public class UserService {
 	}
 	
 	@DELETE
-	@Path("/{param}")
 	@Produces({MediaType.APPLICATION_JSON})
-	public boolean deleteUser(@PathParam("param") Integer id) {
+	public boolean deleteUser(User user) {
 		UserDAO userData = UserDAO.getInstance();
-		return userData.deleteUser(id);
+		return userData.deleteUser(user);
 	}
 	
 }

@@ -18,6 +18,12 @@ import org.mongodb.morphia.annotations.Indexes;
 )
 public class User {
 	
+	@Id
+	private ObjectId id;
+	private String userName;
+	private String emailId;
+	private String password;
+	
 	public User() 
 	{	
 	}
@@ -33,11 +39,7 @@ public class User {
 		return "User [id=" + id + ", userName=" + userName + ", emailId="
 				+ emailId + ", password=" + password + ", blogs=" + blogs + "]";
 	}
-	@Id
-	private ObjectId id;
-	private String userName;
-	private String emailId;
-	private String password;
+
 	
 	@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="blogId")
 	private Set<Blog> blogs;

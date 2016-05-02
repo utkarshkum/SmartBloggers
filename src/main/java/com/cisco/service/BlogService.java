@@ -14,12 +14,11 @@ import javax.ws.rs.core.MediaType;
 
 import com.cisco.dao.BlogDAO;
 import com.cisco.model.Blog;
-import com.cisco.model.User;
 
 @Path("/blogs")
 public class BlogService {
 	
-	private BlogDAO blogDao = new BlogDAO();
+	private BlogDAO blogDao = BlogDAO.getInstance();
 	
 	public BlogDAO getBlogDao() {
 		return blogDao;
@@ -33,31 +32,26 @@ public class BlogService {
 	@Path("/{param}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Blog getBlog(@PathParam("param") Integer id) {
-		return blogDao.getBlog(id);
-		
+		return blogDao.getBlog(id);	
 	}
 	
 	@GET
 	@Path("/user/{param}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<Blog> getBlogWithUserID(@PathParam("param") Integer id) {
-		return blogDao.getBlogsWithUserID(id);
-		
+		return blogDao.getBlogsWithUserID(id);	
 	}
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<Blog> getBlogs() {
-		return blogDao.getBlogs();
-		
+		return blogDao.getBlogs();	
 	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createBlog(Blog blog) {
-		
-		blogDao.createBlog(blog);
-		
+		blogDao.createBlog(blog);	
 	}
 	
 	@PUT
@@ -67,10 +61,9 @@ public class BlogService {
 	}
 	
 	@DELETE
-	@Path("/{param}")
 	@Produces({MediaType.APPLICATION_JSON})
-	public boolean deleteBlog(@PathParam("param") Integer id) {
-		return blogDao.deleteBlog(id);
+	public boolean deleteBlog(Blog blog) {
+		return blogDao.deleteBlog(blog);
 	}
 	
 }
