@@ -22,7 +22,7 @@ import org.apache.commons.codec.binary.Base64;
  * @author maruthir
  *
  */
-//@WebFilter("/rest/*")
+@WebFilter("/rest/*")
 // Apply to all API urls
 public class AuthFilter implements Filter {
 
@@ -68,15 +68,16 @@ public class AuthFilter implements Filter {
 			// VERIFICATION LOGIC
 			if (username.equals("admin") && password.equals("admin123")) {
 				// User is autheticated.. setup session and proceed
-				hres.setStatus(200, "Authorizated");
+				hres.setStatus(200, "Authorizased");
 				//hreq.getSession().setAttribute("user", username);
 				chain.doFilter(req, res);
 				return;
 			}
-		} else {
-			hres.sendError(401, "Invalid authenitcation details");
-			return;
-		}
+		} 
+		
+		hres.sendError(401, "Invalid authenitcation details");
+		return;
+		
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {

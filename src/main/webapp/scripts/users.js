@@ -103,13 +103,13 @@
 	});
 	
 
-	myapp.controller("UserController", function($scope, $http, $log) {
+	myapp.controller("UserController", function($scope, $http, $log, $rootScope) {
 
 		$scope.showloginForm = false;
 		
 		$scope.users = [];
 		
-		$http.defaults.headers.common['Authorization'] = $scope.authHeader;
+		$http.defaults.headers.common['Authorization'] = $rootScope.authHeader;
 
 		var promise = $http.get('/SmartBloggers/rest/users');
 		promise.success(function(data, status, headers, config) {
@@ -121,7 +121,9 @@
 		});
 
 		$scope.addUser = function(user) {
-			$http.post("/SmartBloggers/rest/users", user).sucess(function(data) {
+			$http.defaults.headers.common['Authorization'] = $rootScope.authHeader;
+
+			$http.post("/SmartBloggers/rest/users", user).success(function(data) {
 				$scope.users.push(user);
 			});
 		};
@@ -135,6 +137,8 @@
 
 		$scope.updateUser = function(user) {
 			$log.debug(user);
+			$http.defaults.headers.common['Authorization'] = $rootScope.authHeader;
+
 			$http.put('/SmartBloggers/rest/users', user).success(
 					function(data, status, headers, config) {
 						console.log(data);
@@ -155,23 +159,29 @@
 					
 			$http.defaults.headers.common['Authorization'] = authHeaderValue;
 					
-			var promise = $http.get('/SmartBloggers/rest/login');
+			var promise = $http.get('/SmartBloggers/rest/blogs');
 			
 			promise.success(function(data, status, headers, config) {
-				$scope.authHeader = authHeaderValue;
+				$rootScope.authHeader = authHeaderValue;
 				$scope.showloginForm = false;
-				alert(status);
+				$rootScope.current_user = $scope.user.userName;
+				$rootScope.showuser = true;
+				$window.location.href = 'blogs.html';
+
+
 			}).error(function(data, status, headers, config) {
 				$scope.loading = false;
 				$scope.error = status;
+				alert(status);
 			});
 		};
 		
 	});
 
-	myapp.controller("BlogController", function($scope, $http, $log) {
+	myapp.controller("BlogController", function($scope, $http, $log, $rootScope) {
 		$scope.blogs = [];
 		$scope.blog = {};
+		$http.defaults.headers.common['Authorization'] = $rootScope.authHeader;
 
 		var promise = $http.get('/SmartBloggers/rest/blogs');
 		promise.success(function(data, status, headers, config) {
@@ -183,7 +193,8 @@
 		});
 		
 		$scope.addBlog = function(blog) {
-			
+			$http.defaults.headers.common['Authorization'] = $rootScope.authHeader;
+
 			$http.post("/SmartBloggers/rest/blogs", blog).success(function(data) {
 				$scope.blogs.push(blog);
 				$scope.blog = {};
