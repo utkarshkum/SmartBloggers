@@ -1,17 +1,17 @@
-
-	<div ng-controller="LoginController" class = "blog panel panel-success" ng-init="showloginForm=true" >
-		<div ng-show="showloginForm" class="blog">
-			<form name="loginForm">
-   					<div class = "form-group">
-     					<label for = "name">Name</label>
-						<input type="text" ng-model="user.userName" class="form-control" placeholder="Enter Name">
-					</div>
-		   			<div class = "form-group">
-     					<label for = "passord">Password</label>
-						<input type="password" ng-model="user.password" class="form-control" placeholder="Enter passord"/>
-					</div>
-				<button ng-click="loginUser(user)" class = "btn btn-success">Sign in</button>
-				<button ng-click="showloginForm = false" class = "btn btn-default">Cancel</button>
-			</form>
+<div ng-show="showloginForm" ng-controller="LoginController" ng-init="showloginForm=true">
+	<form name="loginForm" class="form-inline" >
+		<div class="form-group">
+			<label for="name">Name</label> <input type="text"
+				ng-model="user.userName" class="form-control"
+				placeholder="Enter Name">
 		</div>
-	</div>
+		<div class="form-group">
+			<label for="passord">Password</label> <input type="password"
+				ng-model="user.password" class="form-control"
+				placeholder="Enter passord" />
+		</div>
+		<button ng-click="loginUser(user)" class="btn btn-primary">Sign
+			in</button>
+	</form>
+</div>
+
