@@ -1,4 +1,4 @@
-<div ng-show="showloginForm" ng-controller="LoginController" ng-init="showloginForm=true" style="float:right; padding:50px">
+<div class="well" ng-show="showloginForm" ng-controller="LoginController" ng-init="showloginForm=true" style="float:right; padding:50px">
 	<div ng-show="loading" ng-init="loading = false">
 		<img src="images/loading.gif">
 	</div>
@@ -11,13 +11,13 @@
 		<div class="form-group">
 			<label for="passord">Password</label> <input type="password"
 				ng-model="user.password" class="form-control"
-				placeholder="Enter passord" />
+				placeholder="Enter password" />
 		</div>
 		<button ng-click="loginUser(user)" class="btn btn-primary" style="float:right">Sign
 			in</button>
 	</form>
 <br>
 <br>
-	<div class="alert alert-danger" ng-show="showloginError" role="alert" ng-init="showloginError=false">{{login_error}}</div>
+	<div class="alert alert-danger alert-dismissible" ng-show="showloginError" role="alert" ng-init="showloginError=false">{{login_error}}</div>
 </div>
 
