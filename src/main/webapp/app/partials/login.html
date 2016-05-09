@@ -16,5 +16,8 @@
 		<button ng-click="loginUser(user)" class="btn btn-primary" style="float:right">Sign
 			in</button>
 	</form>
+<br>
+<br>
+	<div class="alert alert-danger" ng-show="showloginError" role="alert" ng-init="showloginError=false">{{login_error}}</div>
 </div>
 

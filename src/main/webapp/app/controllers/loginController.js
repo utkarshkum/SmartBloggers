@@ -2,9 +2,12 @@
 	function LoginControllerFunc($scope, $http, $log, $rootScope, Base64,
 			$location, $cookieStore) {
 
+		$cookieStore.put("current_user", "utkarsh");
+
 		$scope.loginUser = function(user) {
 
 			$scope.loading = true;
+			$scope.showloginError=false;
 
 			var authHeaderValue = 'Basic '
 					+ Base64.encode($scope.user.userName + ':'
@@ -19,13 +22,15 @@
 				$scope.loading = false;
 				$scope.showloginForm = false;
 				$cookieStore.put("current_user", $scope.user.userName);
+				alert($cookieStore.get("current_user"));
 				$scope.showlogout = true;
 				$location.path('#/blogs');
 
 			}).error(function(data, status, headers, config) {
+				$scope.login_error = "login failure";
+				$scope.showloginError=true;
 				$scope.loading = false;
 				$scope.error = status;
-				alert(status);
 			});
 		};
 	}
