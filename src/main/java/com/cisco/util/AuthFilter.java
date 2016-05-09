@@ -42,9 +42,9 @@ public class AuthFilter implements Filter {
 		HttpServletResponse hres = (HttpServletResponse) res;
 		// dont check for authenitcation on requests for signup
 		// REPLACE WITH YOUR OWN URLS
-		if (hreq.getRequestURI().contains("/registration")) {
-			//chain.doFilter(req, res);
-			//return;
+		if (hreq.getRequestURI().contains("/register")) {
+			chain.doFilter(req, res);
+			return;
 		}
 		// Check if this request is already authenticated in a session
 		if (hreq.getSession().getAttribute("user") != null) {

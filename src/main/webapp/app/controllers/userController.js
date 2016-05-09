@@ -25,6 +25,19 @@
 						$scope.users.push(user);
 					});
 		};
+		
+		$scope.registerUser = function(user) {
+
+			var promise = $http.post("/SmartBloggers/rest/register", user)
+			promise.success(function(data, status, headers, config) {
+				$scope.register_success = "user registered sucessfully.";
+				$scope.showRegisterSuccess = true;
+				$log.info("user registered sucessfully.");
+			}).error(function(data, status, headers, config) {
+				$scope.register_error="Failed to register";
+				$scope.showRegisterError = true;
+			});
+		};
 
 		$scope.editUser = function(user) {
 			console.log(user);

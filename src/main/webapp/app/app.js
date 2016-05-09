@@ -5,6 +5,9 @@ blogPostingApp.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/users', {
 		templateUrl : '/SmartBloggers/app/partials/users.html',
 		controller : 'UserController'
+	}).when('/register', {
+		templateUrl : '/SmartBloggers/app/partials/register.html',
+		controller : 'UserController'
 	}).when('/blogs', {
 		templateUrl : '/SmartBloggers/app/partials/blogs.html',
 		controller : 'BlogController'

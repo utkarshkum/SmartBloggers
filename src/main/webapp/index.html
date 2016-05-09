@@ -8,7 +8,7 @@
 <script type="text/javascript" src="scripts/angular-route.js"></script>
 <script type="text/javascript" src="scripts/angular.js"></script>
 <script type="text/javascript" src="scripts/angular-cookies.js"></script>
-<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/bootstrap.js"></script>
 <script type="text/javascript" src="app/app.js"></script>
 <script type="text/javascript" src="app/controllers/userController.js"></script>
 <script type="text/javascript" src="app/controllers/loginController.js"></script>
@@ -28,25 +28,16 @@
 			<ul class="nav navbar-nav">
 				<li><a href="#/users">Users</a></li>
 				<li class="active"><a href="#/blogs">Blogs</a></li>
-								<li><a href="#/login">{{$cookieStore.get("current_user")}}</a></li>
-								<li><a href="#/logout" ng-click="logoutUser()">Sign_out</a></li>
+				<li><a href="#/login">Login</a></li>
+				<li>{{$cookieStore.get("current_user")}}</li>
+				<li><a href="#/logout" ng-click="logoutUser()">Sign out</a></li>
+				<li><a href="#/register">Register</a></li>
 
-				<li class="dropdown"><a href="#/login" class="dropdown-toggle" 
-					data-toggle="dropdown"> Account <b class="caret"></b>
-				</a>
-
-					<ul class="dropdown-menu">
-						<li><a href="#/login"> Login </a></li>
-						<li><a href="#/blogs"> Logout </a></li>
-
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
-
-						<li class="divider"></li>
-						<li><a href="#">One more separated link</a></li>
-					</ul></li>
+				<li class="dropdown"><a> Account <b class="caret"></b>
+				</a></li>
 			</ul>
 		</div>
+
 		<div>
 			<form class="navbar-form navbar-left" role="search">
 
