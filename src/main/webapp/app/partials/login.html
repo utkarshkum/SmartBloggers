@@ -1,4 +1,7 @@
 <div ng-show="showloginForm" ng-controller="LoginController" ng-init="showloginForm=true">
+	<div ng-show="loading" ng-init="loading = false">
+		<img src="images/loading.gif">
+	</div>
 	<form name="loginForm" class="form-inline" >
 		<div class="form-group">
 			<label for="name">Name</label> <input type="text"
