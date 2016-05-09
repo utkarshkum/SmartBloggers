@@ -48,4 +48,17 @@ public class UserDAO {
 		return true;
 	}
 	
+	public boolean validateUser(User user) {
+		Datastore dataStore = ServicesFactory.getMongoDB();
+		List<User> filteredUser = dataStore.find(User.class)
+						.filter("userName", user.getUserName()).
+						filter("password", user.getPassword()).asList();
+		
+		if (filteredUser.size() ==1) {
+			return true;
+		}
+		return false;
+		
+	}
+	
 }

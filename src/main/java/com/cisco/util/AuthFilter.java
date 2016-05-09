@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base64;
 
+import com.cisco.dao.UserDAO;
+import com.cisco.model.User;
+
 /**
  * Authenitcation filter that will be invoked before every request to an API
  * resource
@@ -25,6 +28,9 @@ import org.apache.commons.codec.binary.Base64;
 @WebFilter("/rest/*")
 // Apply to all API urls
 public class AuthFilter implements Filter {
+	
+	private UserDAO userDAO = UserDAO.getInstance();
+
 
 	public void destroy() {
 
@@ -62,14 +68,15 @@ public class AuthFilter implements Filter {
 			String credentials = new String(Base64.decodeBase64(base64Credentials));
 			// credentials = username:password
 			// Split the user name and password
-			String username = credentials.split(":")[0];
+			String userName = credentials.split(":")[0];
 			String password = credentials.split(":")[1];
 			// HARDCODED USERNAME CHECKING. REPLACE WITH DATABASE BASED
 			// VERIFICATION LOGIC
-			if (username.equals("admin") && password.equals("admin123")) {
-				// User is autheticated.. setup session and proceed
-				hres.setStatus(200, "Authorizased");
-				//hreq.getSession().setAttribute("user", username);
+			User user = new User();
+			user.setName(userName);
+			user.setPassword(password);
+			
+			if (userDAO.validateUser(user)) {
 				chain.doFilter(req, res);
 				return;
 			}

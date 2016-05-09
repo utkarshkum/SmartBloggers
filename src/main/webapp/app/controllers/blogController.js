@@ -18,7 +18,7 @@
 		$scope.addBlog = function(blog) {
 			$http.defaults.headers.common['Authorization'] = $cookieStore
 					.get("login_info");
-
+			blog.userName = $cookieStore.get("current_user");
 			$http.post("/SmartBloggers/rest/blogs", blog).success(
 					function(data) {
 						$scope.blogs.push(blog);

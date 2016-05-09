@@ -3,6 +3,8 @@ package com.cisco.test;
 import java.util.Iterator;
 import java.util.List;
 
+import junit.framework.Assert;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +23,7 @@ public class UserTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
+//	@Test
 	public void createUserTest() {
 		UserDAO userDAO = UserDAO.getInstance();
 		User user = new User("utkarsh_kumar_1","utkakuma1@gmail.com","uk");
@@ -45,6 +47,13 @@ public class UserTest {
 	public void deleteUserTest() {
 		UserDAO userDAO = UserDAO.getInstance();
 
+	}
+	
+	@Test
+	public void validateUserTest() {
+		UserDAO userDAO = UserDAO.getInstance();
+		User user = new User("utkarsh_kumar_1","utkakuma1@gmail.com","uk");
+		Assert.assertEquals(userDAO.validateUser(user), true);
 	}
 
 }

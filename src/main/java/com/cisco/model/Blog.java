@@ -25,6 +25,7 @@ public class Blog {
 	private String blogName;
 	private String content;
 	private String tag;
+	private String userName;
 	
 	public Blog() {
 		
@@ -86,13 +87,18 @@ public class Blog {
 		this.postDate = postDate;
 	}
 
-	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	@Override
 	public String toString() {
 		return "Blog [blogId=" + blogId + ", blogName=" + blogName
-				+ ", content=" + content + ", tag=" + tag + ", postDate="
-				+ postDate + ", user=" + user + "]";
-	}
-	
-	
+				+ ", content=" + content + ", tag=" + tag + ", userName="
+				+ userName + ", postDate=" + postDate + ", user=" + user + "]";
+	}	
 }
