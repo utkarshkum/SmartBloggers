@@ -1,8 +1,8 @@
-<div ng-show="showloginForm" ng-controller="LoginController" ng-init="showloginForm=true">
+<div ng-show="showloginForm" ng-controller="LoginController" ng-init="showloginForm=true" style="float:right; padding:50px">
 	<div ng-show="loading" ng-init="loading = false">
 		<img src="images/loading.gif">
 	</div>
-	<form name="loginForm" class="form-inline" >
+	<form name="loginForm" >
 		<div class="form-group">
 			<label for="name">Name</label> <input type="text"
 				ng-model="user.userName" class="form-control"
@@ -13,7 +13,7 @@
 				ng-model="user.password" class="form-control"
 				placeholder="Enter passord" />
 		</div>
-		<button ng-click="loginUser(user)" class="btn btn-primary">Sign
+		<button ng-click="loginUser(user)" class="btn btn-primary" style="float:right">Sign
 			in</button>
 	</form>
 </div>
