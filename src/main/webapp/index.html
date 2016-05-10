@@ -24,17 +24,14 @@
 			<a class="navbar-brand" href="#">Smart Bloggers</a>
 		</div>
 
-		<div ng-init="current_user=Login" ng-controller="HomeController">
+		<div ng-controller="HomeController">
 			<ul class="nav navbar-nav">
 				<li><a href="#/users">Users</a></li>
 				<li class="active"><a href="#/blogs">Blogs</a></li>
-				<li><a href="#/login">Login</a></li>
-				<li>{{$cookieStore.get("current_user")}}</li>
-				<li><a href="#/logout" ng-click="logoutUser()">Sign out</a></li>
-				<li><a href="#/register">Register</a></li>
-
-				<li class="dropdown"><a> Account <b class="caret"></b>
-				</a></li>
+				<li ng-show="!showlogoutlink" ><a href="#/login">Login</a></li>
+				<li><a href="#">{{username}}</a></li>
+				<li ng-show="showlogoutlink" ng-init="showlogoutlink=false"><a href="#/logout" ng-click="logoutUser()">Sign out</a></li>
+				<li ng-show="!showlogoutlink" ><a href="#/register">Register</a></li>
 			</ul>
 		</div>
 
@@ -45,8 +42,6 @@
 					<input type="text" ng-model="searchFor" class="form-control"
 						placeholder="Search">
 				</div>
-				<!--button type="submit" class="btn btn-default">Submit</button-->
-
 			</form>
 		</div>
 	</nav>

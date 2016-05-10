@@ -1,5 +1,5 @@
-<div class="well" ng-show="showloginForm" ng-controller="LoginController" ng-init="showloginForm=true" style="width: 20%; float:right;">
-	<div ng-show="loading" ng-init="loading = false">
+<div class="well" ng-show="showloginForm" ng-controller="LoginController" ng-init="showloginForm=true" style="width: 15%; float:right;">
+	<div ng-show="loading" ng-init="loading = false" style="width: 5%;">
 		<img src="images/loading.gif">
 	</div>
 	<form name="loginForm" >
@@ -20,4 +20,7 @@
 <br>
 	<div class="alert alert-danger alert-dismissible" ng-show="showloginError" role="alert" ng-init="showloginError=false">{{login_error}}</div>
 </div>
+
+<div style="width: 15%; float:right;" class="alert alert-info" ng-show="showlogoutmsg" ng-init="showlogoutmsg=false" role="alert">User logged out sucessfully.</div>
+
 

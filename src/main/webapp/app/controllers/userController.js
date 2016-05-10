@@ -1,9 +1,14 @@
 (function() {
-	function UserControllerFunc($scope, $http, $log, $rootScope, $cookieStore) {
+	function UserControllerFunc($scope, $http, $log, $rootScope, $cookieStore, $location) {
 
 		$scope.showloginForm = false;
 
 		$scope.users = [];
+		
+		if ($cookieStore.get("login_info") == null) {
+			$location.path("/login");
+			return;
+		}
 
 		$http.defaults.headers.common['Authorization'] = $cookieStore
 				.get("login_info");

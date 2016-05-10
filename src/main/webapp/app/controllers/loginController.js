@@ -2,12 +2,11 @@
 	function LoginControllerFunc($scope, $http, $log, $rootScope, Base64,
 			$location, $cookieStore) {
 
-		$cookieStore.put("current_user", "utkarsh");
-
 		$scope.loginUser = function(user) {
 
 			$scope.loading = true;
 			$scope.showloginError=false;
+			$scope.showlogoutmsg=false;
 
 			var authHeaderValue = 'Basic '
 					+ Base64.encode($scope.user.userName + ':'
@@ -18,12 +17,13 @@
 			var promise = $http.get('/SmartBloggers/rest/blogs');
 
 			promise.success(function(data, status, headers, config) {
+				
 				$cookieStore.put("login_info", authHeaderValue)
 				$scope.loading = false;
 				$scope.showloginForm = false;
 				$cookieStore.put("current_user", $scope.user.userName);
-				alert($cookieStore.get("current_user"));
 				$scope.showlogout = true;
+				$rootScope.$broadcast('loginEvent', { message: user });
 				$location.path('#/blogs');
 
 			}).error(function(data, status, headers, config) {
