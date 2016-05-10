@@ -10,14 +10,14 @@
 			{{ blog.blogName }}
 		</div>
 		<div class="panel-body">{{ blog.content }}</div>
-		  <div class="panel-footer">{{blog.userName}}</div>
+		  <div class="panel-footer" style="bottom">{{blog.userName}}</div>
 		
 	</div>
 
   <div style="clear: left"></div>
 
-  <h3> Add new blog</h3>
-  <div class="blog panel panel-default">
+  <div class="blog panel panel-default" ng-show="showblogs">
+    <h3> Add new blog</h3>
     <div class="panel-heading">
       <input type="text" placeholder="Title..." size="15" ng-model="blog.blogName"/>
       <div class="title" >
