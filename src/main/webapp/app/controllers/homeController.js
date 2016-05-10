@@ -15,8 +15,8 @@
 		$scope.logoutUser = function($scope, $rootScope) {
 			$cookieStore.put("login_info", null);
 			$scope.showlogoutlink = false;
-			$cookieStore.put("current_user", null);
-			$scope.username = null;
+			$cookieStore.put("current_user", "");
+			$scope.username = "";
 		};
 	};
 
