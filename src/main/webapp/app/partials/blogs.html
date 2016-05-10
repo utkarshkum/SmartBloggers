@@ -2,33 +2,36 @@
 	<div ng-show="loading" ng-init="loading = true">
 		<img src="images/loading.gif" ng-show="showblogs">
 	</div>
-	
 
-	<div class="blog panel panel-primary" ng-repeat="blog in blogs | filter:searchFor">
+
+	<div class="blog panel panel-primary"
+		ng-repeat="blog in blogs | filter:searchFor">
 		<div class="panel-heading">
 			<div style="float: right">{{ blog.tag }}</div>
 			{{ blog.blogName }}
 		</div>
 		<div class="panel-body">{{ blog.content }}</div>
-		  <div class="panel-footer" style="bottom">{{blog.userName}}</div>
-		
+		<div class="panel-footer" style="">{{blog.userName}}</div>
+
 	</div>
 
-  <div style="clear: left"></div>
-
-  <div class="blog panel panel-default" ng-show="showblogs">
-    <h3> Add new blog</h3>
-    <div class="panel-heading">
-      <input type="text" placeholder="Title..." size="15" ng-model="blog.blogName"/>
-      <div class="title" >
-        <input type="text" placeholder="tags..." size="10" ng-model="blog.tag"/>
-      </div>
-    </div>
-    <div class="panel-body">
-      <p>
-        <textarea ng-model="blog.content" placeholder="Description..." rows='4' style="width: 100%"></textarea>
-      </p>
-      <button ng-click="addBlog(blog)" type="button" class="btn btn-success">Add</button>
-    </div>
-  </div>
+	<div style="clear: left"></div>
+	<div ng-show="showblogs">
+		<h3>Add new blog</h3>
+		<div class="blog panel panel-default">
+			<div class="panel-heading">
+				<input type="text" placeholder="Title..." ng-model="blog.blogName" />
+				<div class="title">
+					<input type="text" placeholder="tags..." style="float: right"
+						ng-model="blog.tag" />
+				</div>
+			</div>
+			<div class="panel-body">
+				<p>
+					<textarea ng-model="blog.content" placeholder="Description..."></textarea>
+				</p>
+			</div>
+		</div>
+		<button ng-click="addBlog(blog)" type="button" class="btn btn-success">Add</button>
+	</div>
 </div>
