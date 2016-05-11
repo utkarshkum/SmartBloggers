@@ -23,6 +23,10 @@
 
 		$scope.addBlog = function(blog) {
 			
+			$scope.showBlogAddSuccess = false;
+			$scope.showBlogAddError = false;
+
+			
 			if ($cookieStore.get("login_info") == null) {
 				$location.path("/login");
 				return;
@@ -35,6 +39,9 @@
 					function(data) {
 						$scope.blogs.push(blog);
 						$scope.blog = {};
+						$scope.showaddblog = false;
+						$scope.blog_add_success = "blog added sucessfully";
+						$scope.showBlogAddSuccess = true;
 					});
 		};
 	}

@@ -4,6 +4,7 @@
 
 		if ($cookieStore.get("current_user") !=null) {
 			$scope.username= $cookieStore.get("current_user");
+			$scope.showlogoutlink = true;			 
 		}
 		
 		$rootScope.$on('loginEvent', function (event, user) {
@@ -12,7 +13,7 @@
 			 $scope.showlogoutlink = true;			 
 			 });
 		
-		$scope.logoutUser = function($scope, $rootScope) {
+		$scope.logoutUser = function() {
 			$cookieStore.put("login_info", null);
 			$scope.showlogoutlink = false;
 			$cookieStore.put("current_user", "");
