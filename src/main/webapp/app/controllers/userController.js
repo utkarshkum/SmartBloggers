@@ -5,7 +5,7 @@
 
 		$scope.users = [];
 		
-		if ($cookieStore.get("login_info") == null) {
+		if ($cookieStore.get("login_info") == null && $location.path() != '/register') {
 			$location.path("/login");
 			return;
 		}
