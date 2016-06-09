@@ -4,6 +4,8 @@
 		$scope.blogs = [];
 		$scope.blog = {};
 		
+		$rootScope.$broadcast('load');
+		
 		if ($cookieStore.get("login_info") == null) {
 			$location.path("/login");
 			return;
@@ -15,10 +17,10 @@
 		var promise = $http.get('/SmartBloggers/rest/blogs');
 		promise.success(function(data, status, headers, config) {
 			$scope.blogs = data;
-			$scope.loading = false;
+			$rootScope.$broadcast('unload');
 			$scope.showblogs = true;
 		}).error(function(data, status, headers, config) {
-			$scope.loading2 = false;
+			$rootScope.$broadcast('unload');
 		});
 
 		$scope.addBlog = function(blog) {

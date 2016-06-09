@@ -1,8 +1,4 @@
 <div ng-controller="BlogController">
-	<div ng-show="loading" ng-init="loading = true">
-		<img src="images/loading.gif" ng-show="showblogs">
-	</div>
-
 	<div ng-show="!showaddblog" 
 		ng-repeat="blog in blogs | filter:searchFor">
 		<div class="blog panel panel-primary" style="width: 90%">
@@ -13,7 +9,7 @@
 			<div class="panel-body">
 				<blockquote>
 					<p>{{ blog.content }}</p>
-									<footer>{{blog.userName}}</footer>
+					<footer>{{blog.userName}}</footer>
 					
 				</blockquote>
 			</div>
@@ -42,7 +38,7 @@
 				<textarea class="form-control" rows="5" ng-model="blog.content" ng-minlength="5" 
 					placeholder="Description..."></textarea>
 			</div>
-			<button ng-click="addBlog(blog)" class="btn btn-primary">Add</button>
+			<button ng-click="addBlog(blog)" ng-init="showBlogAddSuccess=false" class="btn btn-primary">Add</button>
 			<button ng-click="showaddblog = false" class="btn btn-primary">Cancel</button>
 			<br> <br>
 			<div class="alert alert-danger alert-dismissible"
@@ -51,13 +47,6 @@
 			<div class="alert alert-success alert-dismissible"
 				ng-show="showBlogAddSuccess" role="alert"
 				ng-init="showBlogAddSuccess=false">{{blog_add_success}}</div>
-
-
 		</div>
-
 	</form>
-
-
-
-
 </div>

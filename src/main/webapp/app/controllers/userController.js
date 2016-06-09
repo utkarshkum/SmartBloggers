@@ -2,6 +2,7 @@
 	function UserControllerFunc($scope, $http, $log, $rootScope, $cookieStore, $location) {
 
 		$scope.showloginForm = false;
+		$rootScope.$broadcast('load');
 
 		$scope.users = [];
 		
@@ -16,9 +17,9 @@
 		var promise = $http.get('/SmartBloggers/rest/users');
 		promise.success(function(data, status, headers, config) {
 			$scope.users = data;
-			$scope.loading = false;
+			$rootScope.$broadcast('unload');
 		}).error(function(data, status, headers, config) {
-			$scope.loading = false;
+			$rootScope.$broadcast('unload');
 			$scope.error = status;
 		});
 

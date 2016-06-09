@@ -15,37 +15,44 @@
 <script type="text/javascript" src="app/controllers/loginController.js"></script>
 <script type="text/javascript" src="app/controllers/homeController.js"></script>
 <script type="text/javascript" src="app/controllers/blogController.js"></script>
-
 </head>
-<body ng-app="blogPostingApp" >
 
+<body ng-app="blogPostingApp">
+	<div ng-controller="HomeController">
 
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Smart Bloggers</a>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Smart Bloggers</a>
+			</div>
+
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="#/users">Users</a></li>
+					<li class="active"><a href="#/blogs">Blogs</a></li>
+					<li ng-show="!showlogoutlink"><a href="#/login">Login</a></li>
+					<li ng-show="showlogoutlink" ng-model="username"><a href="#">{{username}}</a></li>
+					<li ng-show="showlogoutlink"><a href="#/logout"
+						ng-click="logoutUser()">Sign out</a></li>
+					<li ng-show="!showlogoutlink"><a href="#/register">Register</a></li>
+				</ul>
+			</div>
+
+			<div>
+				<form class="navbar-form navbar-left" role="search">
+
+					<div class="form-group">
+						<input type="text" ng-model="searchFor" class="form-control"
+							placeholder="Search">
+					</div>
+				</form>
+			</div>
+		</nav>
+		<div ng-show="showloading" 
+			style="align: center; width: 20%;">
+			<img src="images/loading.gif">
 		</div>
+	</div>
 
-		<div ng-controller="HomeController">
-			<ul class="nav navbar-nav">
-				<li><a href="#/users">Users</a></li>
-				<li class="active"><a href="#/blogs">Blogs</a></li>
-				<li ng-show="!showlogoutlink" ><a href="#/login">Login</a></li>
-				<li ng-show="showlogoutlink" ng-model="username"><a href="#">{{username}}</a></li>
-				<li ng-show="showlogoutlink" ng-init="showlogoutlink=false"><a href="#/logout" ng-click="logoutUser()">Sign out</a></li>
-				<li ng-show="!showlogoutlink" ><a href="#/register">Register</a></li>
-			</ul>
-		</div>
-
-		<div>
-			<form class="navbar-form navbar-left" role="search">
-
-				<div class="form-group">
-					<input type="text" ng-model="searchFor" class="form-control"
-						placeholder="Search">
-				</div>
-			</form>
-		</div>
-	</nav>
-	<div ng-view class="mybody" style="padding-left: 150px; padding-right: 150px;"/>
+	<div ng-view class="mybody"></div>
 </body>
 </html>

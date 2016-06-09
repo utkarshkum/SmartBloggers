@@ -21,7 +21,8 @@ div.user {
 	min-height: 50px;
 }
 div.mybody {
-  padding: 50px;
+  padding-left: 150px; 
+  padding-right: 150px;
 }
 
 input[type=text] {
@@ -36,7 +37,8 @@ textarea {
   border: 1px solid #bbb;
 }
 mybutton {
-		width: 100px;
+	width: 100px;
 }
+
 
 
