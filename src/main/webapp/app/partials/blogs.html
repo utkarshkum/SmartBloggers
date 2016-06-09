@@ -1,7 +1,7 @@
 <div ng-controller="BlogController">
 	<div ng-show="!showaddblog" 
 		ng-repeat="blog in blogs | filter:searchFor">
-		<div class="blog panel panel-primary" style="width: 90%">
+		<div class="panel panel-primary" style="width: 90%">
 			<div class="panel-heading">
 				<div style="float: right">{{ blog.tag }}</div>
 				{{ blog.blogName }}
@@ -30,7 +30,8 @@
 					placeholder="Title...">
 			</div>
 			<div class="form-group">
-				<label for="Tags">Tags</label> <input type="text" ng-minlength="5" 
+				<label for="Tags">Tags</label> 
+				<input type="text" ng-minlength="5" 
 					ng-model="blog.tag" class="form-control" placeholder="tags..." />
 			</div>
 			<div class="form-group">

@@ -23,6 +23,7 @@
 	<div ng-controller="HomeController">
 
 		<nav class="navbar navbar-default" role="navigation">
+		  <div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Smart Bloggers</a>
 			</div>
@@ -30,7 +31,8 @@
 			<div>
 				<ul class="nav navbar-nav">
 					<li><a href="#/users">Users</a></li>
-					<li class="active"><a href="#/blogs">Blogs</a></li>
+					<li><a href="#/blogs">Blogs</a></li>
+					<li><a href="#/blog">Add Blog</a></li>
 					<li ng-show="!showlogoutlink"><a href="#/login">Login</a></li>
 					<li ng-show="showlogoutlink" ng-model="username"><a href="#">{{username}}</a></li>
 					<li ng-show="showlogoutlink"><a href="#/logout"
@@ -50,6 +52,8 @@
 				</form>
 			</div>
 		</nav>
+		
+		</div>
 		<div ng-show="showloading" align="center" >
 			<img src="images/loading.gif">
 		</div>

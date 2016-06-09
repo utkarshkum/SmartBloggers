@@ -41,7 +41,7 @@
 			$http.post("/SmartBloggers/rest/blogs", blog).success(
 					function(data) {
 						$scope.blogs.push(blog);
-						$scope.blog = {};
+						$scope.blog = null;
 						$scope.showaddblog = false;
 						$scope.blog_add_success = "blog added sucessfully";
 						$scope.showBlogAddSuccess = true;

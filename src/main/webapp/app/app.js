@@ -11,6 +11,9 @@ blogPostingApp.config([ '$routeProvider', function($routeProvider) {
 	}).when('/blogs', {
 		templateUrl : '/SmartBloggers/app/partials/blogs.html',
 		controller : 'BlogController'
+	}).when('/blog', {
+		templateUrl : '/SmartBloggers/app/partials/blog.html',
+		controller : 'BlogController'
 	}).when('/search', {
 		templateUrl : '/SmartBloggers/app/partials/search.html',
 		controller : 'SearchController'
