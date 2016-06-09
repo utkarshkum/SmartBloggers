@@ -27,19 +27,19 @@ public class BlogService {
 	public void setBlogDao(BlogDAO blogDao) {
 		this.blogDao = blogDao;
 	}
-
-	@GET
-	@Path("/{param}")
-	@Produces({MediaType.APPLICATION_JSON})
-	public Blog getBlog(@PathParam("param") Integer id) {
-		return blogDao.getBlog(id);	
-	}
 	
 	@GET
 	@Path("/user/{param}")
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Blog> getBlogWithUserID(@PathParam("param") Integer id) {
+	public List<Blog> getBlogsWithUserID(@PathParam("param") Integer id) {
 		return blogDao.getBlogsWithUserID(id);	
+	}
+	
+	@GET
+	@Path("/{param}")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Blog> getBlogsWithtags(@PathParam("param") String tags) {
+		return blogDao.getBlogsWithtags(tags);	
 	}
 	
 	@GET

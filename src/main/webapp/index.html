@@ -15,6 +15,8 @@
 <script type="text/javascript" src="app/controllers/loginController.js"></script>
 <script type="text/javascript" src="app/controllers/homeController.js"></script>
 <script type="text/javascript" src="app/controllers/blogController.js"></script>
+<script type="text/javascript" src="app/controllers/searchController.js"></script>
+
 </head>
 
 <body ng-app="blogPostingApp" class="mybody">
@@ -34,15 +36,16 @@
 					<li ng-show="showlogoutlink"><a href="#/logout"
 						ng-click="logoutUser()">Sign out</a></li>
 					<li ng-show="!showlogoutlink"><a href="#/register">Register</a></li>
+					<li ng-show="showlogoutlink"><a href="#/search">Search</a></li>
 				</ul>
 			</div>
 
-			<div>
-				<form class="navbar-form navbar-left" role="search">
+			<div style="padding:5px;">
+				<form class="navbar-form navbar-right" role="search" >
 
-					<div class="form-group">
+					<div class="form-group" >
 						<input type="text" ng-model="searchFor" class="form-control"
-							placeholder="Search">
+							placeholder="Filter...">
 					</div>
 				</form>
 			</div>

@@ -1,5 +1,7 @@
 package com.cisco.dao;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.mongodb.morphia.Datastore;
@@ -7,6 +9,7 @@ import org.mongodb.morphia.Datastore;
 import com.cisco.model.Blog;
 import com.cisco.model.User;
 import com.cisco.util.ServicesFactory;
+import com.mongodb.BasicDBObject;
 
 
 public class BlogDAO {
@@ -31,6 +34,25 @@ public class BlogDAO {
 	public List<Blog> getBlogsWithUserID(Integer userId) {
 		Datastore dataStore = ServicesFactory.getMongoDB();
 		return null;
+	}
+	
+	public List<Blog> getBlogsWithtags(String tags) {
+		String[] tagsList = tags.split(" ");
+		Datastore dataStore = ServicesFactory.getMongoDB();
+		
+		List<Blog> bloglist = dataStore.find(Blog.class).asList();
+		List<Blog> filteredbloglist = new ArrayList<Blog>();
+		for(String tag:tagsList) {
+			Iterator itr = bloglist.iterator();
+			while(itr.hasNext()) {
+				Blog blog = (Blog) itr.next();
+				if(blog.getTag()!=null && blog.getTag().contains(tag)) {
+					filteredbloglist.add(blog);
+				}
+			}
+		}
+		
+		return filteredbloglist;
 	}
 	
 	
