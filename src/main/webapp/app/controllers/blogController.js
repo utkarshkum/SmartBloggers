@@ -4,12 +4,13 @@
 		$scope.blogs = [];
 		$scope.blog = {};
 		
-		$rootScope.$broadcast('load');
 		
 		if ($cookieStore.get("login_info") == null) {
 			$location.path("/login");
 			return;
 		}
+		
+		$rootScope.$broadcast('load');
 	
 		$http.defaults.headers.common['Authorization'] = $cookieStore
 				.get("login_info");

@@ -28,7 +28,9 @@
 			$cookieStore.put("current_user", null);
 			$scope.username = "";
 			$scope.showloading = false;
+			$rootScope.$broadcast('unload');
 		};
+		$scope.showloading = false;
 	};
 
 	blogPostingApp.controller("HomeController", HomeControllerfunc);
