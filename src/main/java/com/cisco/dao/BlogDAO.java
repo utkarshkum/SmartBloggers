@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.query.Query;
 
 import com.cisco.model.Blog;
 import com.cisco.model.User;
@@ -26,14 +27,14 @@ public class BlogDAO {
 	
 	public Blog getBlog(Integer id) {
 		Datastore dataStore = ServicesFactory.getMongoDB();
-
 		return null;
 
 	}
 	
-	public List<Blog> getBlogsWithUserID(Integer userId) {
+	public List<Blog> getBlogsWithUserName(String username) {
 		Datastore dataStore = ServicesFactory.getMongoDB();
-		return null;
+		Query query = dataStore.createQuery(Blog.class).field("userName").equal(username);
+		return query.asList();	
 	}
 	
 	public List<Blog> getBlogsWithtags(String tags) {

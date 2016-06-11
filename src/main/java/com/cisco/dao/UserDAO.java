@@ -3,6 +3,7 @@ package com.cisco.dao;
 import java.util.List;
 
 import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.query.Query;
 
 import com.cisco.model.User;
 import com.cisco.util.ServicesFactory;
@@ -20,10 +21,10 @@ public class UserDAO {
 		
 	}
 	
-	public User getUser(Integer id) {
+	public User getUser(String username) {
 		Datastore dataStore = ServicesFactory.getMongoDB();
-
-		return null;
+		Query<User> query = dataStore.createQuery(User.class).field("userName").equal(username);
+		return query.get();
 	}
 		
 	public List<User> getUsers() {

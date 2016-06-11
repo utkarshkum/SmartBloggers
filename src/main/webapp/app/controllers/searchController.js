@@ -16,7 +16,7 @@
 			
 			$http.defaults.headers.common['Authorization'] = $cookieStore
 					.get("login_info");
-			var url = '/SmartBloggers/rest/blogs/'+tags;
+			var url = '/SmartBloggers/rest/blogs/tags/'+tags;
 			var promise = $http.get(url);
 			promise.success(function(data, status, headers, config) {
 				$scope.blogs = data;

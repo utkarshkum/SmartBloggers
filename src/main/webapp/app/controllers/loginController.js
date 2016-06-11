@@ -15,17 +15,19 @@
 
 			$http.defaults.headers.common['Authorization'] = authHeaderValue;
 
-			var promise = $http.get('/SmartBloggers/rest/blogs');
+			var url = '/SmartBloggers/rest/users/' + user.userName;
+			var promise = $http.get(url);
 
 			promise.success(function(data, status, headers, config) {
 				
 				$cookieStore.put("login_info", authHeaderValue)
 				$scope.showloginForm = false;
+				$scope.user = data;
 				$cookieStore.put("current_user", $scope.user.userName);
 				$scope.showlogout = true;
 				$rootScope.$broadcast('loginEvent');
-				$location.path('#/blogs');
 				$rootScope.$broadcast('unload');
+				$location.path('/showblogs');
 
 			}).error(function(data, status, headers, config) {
 				$scope.login_error = "login failure";

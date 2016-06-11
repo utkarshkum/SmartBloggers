@@ -1,6 +1,6 @@
 (function() {
 
-	function HomeControllerfunc($scope, $http, $log, $rootScope, $cookieStore) {
+	function HomeControllerfunc($scope, $http, $log, $rootScope, $cookieStore, $location) {
 
 		$scope.showloading = false;
 		
@@ -29,6 +29,7 @@
 			$scope.username = "";
 			$scope.showloading = false;
 			$rootScope.$broadcast('unload');
+			$location.path('/login');
 		};
 		$scope.showloading = false;
 	};

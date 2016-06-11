@@ -4,37 +4,31 @@
 		$scope.showloginForm = false;
 		$rootScope.$broadcast('load');
 
+		
 		$scope.users = [];
 		
 		if ($cookieStore.get("login_info") == null && $location.path() != '/register') {
 			$location.path("/login");
 			return;
 		}
-
-		$http.defaults.headers.common['Authorization'] = $cookieStore
-				.get("login_info");
-
-		var promise = $http.get('/SmartBloggers/rest/users');
-		promise.success(function(data, status, headers, config) {
-			$scope.users = data;
-			$rootScope.$broadcast('unload');
-		}).error(function(data, status, headers, config) {
-			$rootScope.$broadcast('unload');
-			$scope.error = status;
-		});
-
-		$scope.addUser = function(user) {
-			$http.defaults.headers.common['Authorization'] = $rootScope.authHeader;
-
-			$http.post("/SmartBloggers/rest/users", user).success(
-					function(data) {
-						$scope.users.push(user);
-					});
-		};
 		
+		if ($location.path() == '/users') {
+			$http.defaults.headers.common['Authorization'] = $cookieStore
+			.get("login_info");
+
+			var promise = $http.get('/SmartBloggers/rest/users');
+			promise.success(function(data, status, headers, config) {
+				$scope.users = data;
+				$rootScope.$broadcast('unload');
+			}).error(function(data, status, headers, config) {
+				$rootScope.$broadcast('unload');
+				$scope.error = status;
+			});
+		}
+
 		$scope.registerUser = function(user) {
 
-			var promise = $http.post("/SmartBloggers/rest/register", user)
+			var promise = $http.post("/SmartBloggers/rest/users", user)
 			promise.success(function(data, status, headers, config) {
 				$scope.register_success = "user registered sucessfully.";
 				$scope.showRegisterSuccess = true;

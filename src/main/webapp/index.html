@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="app/controllers/homeController.js"></script>
 	<script type="text/javascript" src="app/controllers/blogController.js"></script>
 	<script type="text/javascript" src="app/controllers/searchController.js"></script>
+	<script type="text/javascript" src="app/controllers/accountController.js"></script>
 </head>
 
 <body ng-app="blogPostingApp" class="mybody">
@@ -30,10 +31,10 @@
 			<div>
 				<ul class="nav navbar-nav">
 					<li ng-show="showlogoutlink"><a href="#/users">Users</a></li>
-					<li ng-show="showlogoutlink"><a href="#/blogs">Blogs</a></li>
-					<li ng-show="showlogoutlink"><a href="#/blog">Add Blog</a></li>
+					<li ng-show="showlogoutlink"><a href="#/showblogs">Blogs</a></li>
+					<li ng-show="showlogoutlink"><a href="#/addblog">Add Blog</a></li>
 					<li ng-show="!showlogoutlink"><a href="#/login">Login</a></li>
-					<li ng-show="showlogoutlink" ng-model="username"><a href="#">{{username}}</a></li>
+					<li ng-show="showlogoutlink" ng-model="username"><a href="#/mypage">{{username}}</a></li>
 					<li ng-show="showlogoutlink"><a href="#/logout"
 						ng-click="logoutUser()">Sign out</a></li>
 					<li ng-show="!showlogoutlink"><a href="#/register">Register</a></li>

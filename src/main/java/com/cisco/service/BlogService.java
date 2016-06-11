@@ -29,14 +29,14 @@ public class BlogService {
 	}
 	
 	@GET
-	@Path("/user/{param}")
+	@Path("/users/{param}")
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Blog> getBlogsWithUserID(@PathParam("param") Integer id) {
-		return blogDao.getBlogsWithUserID(id);	
+	public List<Blog> getBlogsWithUserName(@PathParam("param") String username) {
+		return blogDao.getBlogsWithUserName(username);	
 	}
 	
 	@GET
-	@Path("/{param}")
+	@Path("/tags/{param}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<Blog> getBlogsWithtags(@PathParam("param") String tags) {
 		return blogDao.getBlogsWithtags(tags);	

@@ -40,18 +40,13 @@ public class AuthFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest hreq = (HttpServletRequest) req;
 		HttpServletResponse hres = (HttpServletResponse) res;
-		// dont check for authenitcation on requests for signup
-		// REPLACE WITH YOUR OWN URLS
-		if (hreq.getRequestURI().contains("/register")) {
+
+		// When a new user is registering then we don't need to validate it. 
+		if (hreq.getRequestURI().contains("/users") && hreq.getMethod().equals("POST")) {
 			chain.doFilter(req, res);
 			return;
 		}
-		// Check if this request is already authenticated in a session
-		if (hreq.getSession().getAttribute("user") != null) {
-			// Authenitcated user, proceed with the api call
-			//chain.doFilter(req, res);
-			//return;
-		}
+
 		// Not an already authenticated user, check for credentials
 		// Get basic auth header
 		String basicAuthHeader = hreq.getHeader("Authorization");
