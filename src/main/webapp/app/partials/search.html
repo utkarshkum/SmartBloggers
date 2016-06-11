@@ -1,25 +1,20 @@
 <div ng-controller="SearchController">
 	<div class="form-group has-feedback">
+		<span class="glyphicon glyphicon-search form-control-feedback"></span>
 	    <input type="text" class="form-control" id="inputSuccess2" placeholder="Search blogs..." ng-model="tags"/>
-	    <span class="glyphicon glyphicon-search form-control-feedback"></span>
-	    	<button ng-show="!showaddblog" class="well well-sm"
-			ng-click="searchBlog(tags)">Search</button>
+				<br>
+		<button ng-click="searchBlog(tags)" class="btn btn-primary" style="float:right">Search</button>
 	</div>
-	<div  ng-show="searchblogsresults"
-		ng-repeat="blog in blogs | filter:searchFor">
-		<div class="blog panel panel-primary" style="width: 90%">
+	<div ng-show="searchblogsresults" ng-repeat="blog in blogs | filter:searchFor">
+		<div class="panel panel-primary" style="width: 90%">
 			<div class="panel-heading">
-				<div style="float: right">{{ blog.tag }}</div>
-				{{ blog.blogName }}
+				<div style="float: right">{{blog.tag}}</div>
+				{{blog.blogName}}
 			</div>
-			<div class="panel-body">
-				<blockquote>
-					<p>{{ blog.content }}</p>
-					<footer>{{blog.userName}}</footer>
-					
-				</blockquote>
-			</div>
+			<blockquote>
+				<p>{{blog.content}}</p>
+				<footer>{{blog.userName}}</footer>
+			</blockquote>
 		</div>
-			<div style="clear: left"></div>
 	</div>
 </div>

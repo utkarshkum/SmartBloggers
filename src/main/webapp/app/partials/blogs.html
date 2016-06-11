@@ -3,20 +3,17 @@
 		ng-repeat="blog in blogs | filter:searchFor">
 		<div class="panel panel-primary" style="width: 90%">
 			<div class="panel-heading">
-				<div style="float: right">{{ blog.tag }}</div>
-				{{ blog.blogName }}
+				<div style="float: right">{{blog.tag}}</div>
+				{{blog.blogName}}
 			</div>
-			<div class="panel-body">
 				<blockquote>
-					<p>{{ blog.content }}</p>
+					<p>{{blog.content}}</p>
 					<footer>{{blog.userName}}</footer>
 					
 				</blockquote>
-			</div>
 		</div>
-			<div style="clear: left"></div>
 	</div>
-
+	<div style="clear: left"></div>
 	<div style="clear: left"></div>
 	<button ng-show="!showaddblog" class="well well-sm"
 		ng-click="showaddblog = true">Add Blog</button>
@@ -41,7 +38,6 @@
 			</div>
 			<button ng-click="addBlog(blog)" ng-init="showBlogAddSuccess=false" class="btn btn-primary">Add</button>
 			<button ng-click="showaddblog = false" class="btn btn-primary">Cancel</button>
-			<br> <br>
 			<div class="alert alert-danger alert-dismissible"
 				ng-show="showBlogAddError" role="alert"
 				ng-init="showBlogAddError = false">{{blog_add_error}}</div>

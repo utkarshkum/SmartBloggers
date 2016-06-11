@@ -20,9 +20,12 @@ public class User {
 	
 	@Id
 	private ObjectId id;
+	private String fullName;
 	private String userName;
 	private String emailId;
 	private String password;
+	@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="blogId")
+	private Set<Blog> blogs;
 	
 	public User() 
 	{	
@@ -34,15 +37,25 @@ public class User {
 		this.emailId = emailId;
 		this.password = password;
 	}
+	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", emailId="
-				+ emailId + ", password=" + password + ", blogs=" + blogs + "]";
+		return "User [fullName=" + fullName + ", userName=" + userName
+				+ ", emailId=" + emailId + ", password=" + password
+				+ ", blogs=" + blogs + "]";
+	}
+	
+	public String getFullName() {
+		return fullName;
 	}
 
-	
-	@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="blogId")
-	private Set<Blog> blogs;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	
 	public Set<Blog> getBlogs() {
 		return blogs;
