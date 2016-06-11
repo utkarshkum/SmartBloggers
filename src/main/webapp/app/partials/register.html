@@ -1,4 +1,4 @@
-<div class="well" style="width: 30%; float:right" ng-controller="UserController">
+<div class="well container" ng-controller="UserController">
 	<div ng-show="loading" ng-init="loading = false">
 		<img src="images/loading.gif">
 	</div>
@@ -6,7 +6,7 @@
 		<div class="form-group">
 			<label for="name">User Name</label> <input type="text"
 				ng-model="user.userName" class="form-control"
-				placeholder="Enter User Name">
+				placeholder="Enter User Name" required>
 		</div>
 		<div class="form-group">
 			<label for="name">Full name</label> <input type="text"
@@ -21,11 +21,11 @@
 		<div class="form-group">
 			<label for="passord">Password</label> <input type="password"
 				ng-model="user.password" class="form-control"
-				placeholder="Enter password" />
+				placeholder="Enter password" required/>
 		</div>
 		<button ng-click="registerUser(user)" class="btn btn-primary" style="float:right">Register</button>
 	</form>
-<br>
+<br> 
 <br>
 	<div class="alert alert-danger alert-dismissible" ng-show="showRegisterError" role="alert" ng-init="showRegisterError=false">{{register_error}}</div>
 	<div class="alert alert-success alert-dismissible" ng-show="showRegisterSuccess" role="alert" ng-init="showRegisterSuccess=false">{{register_success}}</div>

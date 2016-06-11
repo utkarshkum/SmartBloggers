@@ -39,6 +39,23 @@ textarea {
 mybutton {
 	width: 100px;
 }
+.login-form {
+	max-width: 300px;
+	margin: 0 auto;
+}
+#inputUsername {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+#inputPassword {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+.well {
+	width:300px;
+	margin: 0 auto;
+}
 
 
 
