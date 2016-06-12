@@ -36,7 +36,7 @@
 					<li ng-show="!showlogoutlink"><a href="#/login">Login</a></li>
 					<li ng-show="showlogoutlink" ng-model="username"><a href="#/mypage"><b>{{username}}</b></a></li>
 					<li ng-show="showlogoutlink"><a href="#/logout"
-						ng-click="logoutUser()" data-toggle="modal" data-target=".bs-example-modal-sm">Sign out</a></li>
+						ng-click="logoutUser()">Sign out</a></li>
 					<li ng-show="!showlogoutlink"><a href="#/register">Register</a></li>
 					<li ng-show="showlogoutlink"><a href="#/search">Search</a></li>
 				</ul>
