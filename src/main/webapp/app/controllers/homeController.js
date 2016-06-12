@@ -29,7 +29,6 @@
 			$scope.username = "";
 			$scope.showloading = false;
 			$rootScope.$broadcast('unload');
-			$location.path('/login');
 		};
 		$scope.showloading = false;
 	};

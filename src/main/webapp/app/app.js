@@ -20,6 +20,9 @@ blogPostingApp.config([ '$routeProvider', function($routeProvider) {
 	}).when('/login', {
 		templateUrl : '/SmartBloggers/app/partials/login.html',
 		controller : 'LoginController'
+	}).when('/logout', {
+		templateUrl : '/SmartBloggers/app/partials/logout.html',
+		controller : 'LoginController'
 	}).when('/mypage', {
 		templateUrl : '/SmartBloggers/app/partials/mypage.html',
 		controller : 'AccountController'

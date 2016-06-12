@@ -1,6 +1,6 @@
 	<div ng-controller="UserController">
 		
-			<div class="user panel panel-default" ng-repeat="user in users | filter:searchFor">
+			<div class="user panel panel-primary" ng-repeat="user in users | filter:searchFor">
 		<div class="panel-heading">
 			{{ user.userName }}
 		</div>
@@ -13,8 +13,8 @@
 	  <div style="clear: left"></div>
 	<br>
 
-		<button ng-show="!showAddUserForm" class="well well-sm" ng-click="showAddUserForm = true">Add User</button>
-		<div style="width: 20%;" class="well" ng-show="showAddUserForm" ng-init="showAddUserForm=false">
+		<button ng-show="!showAddUserForm" class="btn btn-primary" ng-click="showAddUserForm = true">Add User</button>
+		<div class="well" ng-show="showAddUserForm" ng-init="showAddUserForm=false">
 			<form name="userForm">
 				<div class="form-group">
 					<label for="name">User Name</label> <input type="text"

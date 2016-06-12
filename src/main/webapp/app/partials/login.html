@@ -1,7 +1,7 @@
 <div class="well container" ng-controller="LoginController">
 	<form class="login-form">
     	<h3>Please sign in</h3>
-      	<input type="text" id="inputUsername" ng-model="user.userName" class="form-control" placeholder="Username..." required>
+      	<input type="text" id="inputUsername" ng-model="user.userName" class="form-control" placeholder="  Username..." required>
       	<input type="password" id="inputPassword" ng-model="user.password" class="form-control" placeholder="Password..." required>
 		<br>
 		<div class="alert alert-danger" role="alert" ng-show="showloginError" ng-init="showloginError=false">{{login_error}}</div>
