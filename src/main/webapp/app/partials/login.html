@@ -1,4 +1,4 @@
-<div class="well container" ng-controller="LoginController">
+<div class="well container" ng-controller="LoginController" ng-show="!showloading">
 	<form class="login-form">
     	<h3>Please sign in</h3>
       	<input type="text" id="inputUsername" ng-model="user.userName" class="form-control" placeholder="  Username..." required>

@@ -1,3 +1,6 @@
+<div class="page-header">
+	<h3>My Blogs</h3>
+</div>
 <div ng-controller="AccountController">
 	<div ng-repeat="blog in blogs">
 		<div class="panel panel-primary" style="width: 90%">
@@ -12,8 +15,11 @@
 		</div>
 	</div>
 </div>
+<div class="page-header">
+	<h3>My Details</h3>
+</div>
 <div ng-controller="UserController">	
-	<div class="user panel panel-default" ng-model="user">
+	<div class="user panel panel-primary" ng-model="user">
 		<div class="panel-heading">
 			{{ user.userName }}
 		</div>

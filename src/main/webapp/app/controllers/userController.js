@@ -30,9 +30,9 @@
 
 			var promise = $http.post("/SmartBloggers/rest/users", user)
 			promise.success(function(data, status, headers, config) {
-				$scope.register_success = "user registered sucessfully.";
+				$scope.register_success = "User registered sucessfully.";
 				$scope.showRegisterSuccess = true;
-				$log.info("user registered sucessfully.");
+				$log.info("User registered sucessfully.");
 			}).error(function(data, status, headers, config) {
 				$scope.register_error="Failed to register";
 				$scope.showRegisterError = true;

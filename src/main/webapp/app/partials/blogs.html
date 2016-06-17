@@ -1,4 +1,4 @@
-<div ng-controller="BlogController">
+<div ng-controller="BlogController" ng-show="!showloading">
 	<div ng-show="!showaddblog" 
 		ng-repeat="blog in blogs | filter:searchFor">
 		<div class="panel panel-primary" style="width: 90%">
