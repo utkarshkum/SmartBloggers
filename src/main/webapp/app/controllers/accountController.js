@@ -8,10 +8,6 @@
 			$scope.showlogoutlink = true;
 		}
 
-		$rootScope.$on('load', function(event) {
-			$scope.showloading = true;
-		});
-
 		$http.defaults.headers.common['Authorization'] = $cookieStore.get("login_info");
 
 		var url = '/SmartBloggers/rest/users/' + $cookieStore.get("current_user");
@@ -38,9 +34,6 @@
 			$rootScope.$broadcast('unload');
 		});
 
-		$rootScope.$on('unload', function(event) {
-			$scope.showloading = false;
-		});
 	};
 
 	blogPostingApp.controller("AccountController", AccountControllerfunc);
