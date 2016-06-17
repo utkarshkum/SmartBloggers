@@ -1,4 +1,8 @@
-<div ng-controller="BlogController" ng-show="!showloading">
+<div ng-show="!showloading">
+<div class="page-header">
+	<h3>All Blogs</h3>
+</div>
+<div ng-controller="BlogController">
 	<div ng-show="!showaddblog" 
 		ng-repeat="blog in blogs | filter:searchFor">
 		<div class="panel panel-primary" style="width: 90%">
@@ -46,4 +50,5 @@
 				ng-init="showBlogAddSuccess=false">{{blog_add_success}}</div>
 		</div>
 	</form>
+</div>
 </div>

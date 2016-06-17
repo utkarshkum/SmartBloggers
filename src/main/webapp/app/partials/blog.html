@@ -1,5 +1,6 @@
+<div ng-show="!showloading">
 <div class="page-header">
-	<h3>Blogs</h3>
+	<h3>New Blog</h3>
 </div>
 <div ng-controller="BlogController">
 	<form name="addblogForm">
@@ -20,7 +21,6 @@
 					placeholder="Description..."></textarea>
 			</div>
 			<button ng-click="addBlog(blog)" ng-init="showBlogAddSuccess=false" class="btn btn-primary">Add</button>
-			<button ng-click="showaddblog = false" class="btn btn-primary">Cancel</button>
 			<br> <br>
 			<div class="alert alert-danger alert-dismissible"
 				ng-show="showBlogAddError" role="alert"
@@ -30,4 +30,5 @@
 				ng-init="showBlogAddSuccess=false">{{blog_add_success}}</div>
 		</div>
 	</form>
+</div>
 </div>

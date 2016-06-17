@@ -1,6 +1,10 @@
-	<div ng-controller="UserController">
-		
-			<div class="user panel panel-primary" ng-repeat="user in users | filter:searchFor">
+<div ng-show="!showloading">
+
+	<div ng-controller="UserController"  ng-init="showAddUserForm = false">
+		<div class="page-header" ng-show="!showAddUserForm">
+			<h3>All Users</h3>
+		</div>
+			<div ng-show="!showAddUserForm" class="user panel panel-primary" ng-repeat="user in users | filter:searchFor">
 		<div class="panel-heading">
 			{{ user.userName }}
 		</div>
@@ -14,7 +18,7 @@
 	<br>
 
 		<button ng-show="!showAddUserForm" class="btn btn-primary" ng-click="showAddUserForm = true">Add User</button>
-		<div class="well" ng-show="showAddUserForm" ng-init="showAddUserForm=false">
+		<div class="well" ng-show="showAddUserForm">
 			<form name="userForm">
 				<div class="form-group">
 					<label for="name">User Name</label> <input type="text"
@@ -43,3 +47,4 @@
 			</form>
 		</div>
 	</div>
+</div>
