@@ -22,7 +22,7 @@ import com.cisco.model.User;
  * Authenitcation filter that will be invoked before every request to an API
  * resource
  * 
- * @author maruthir
+ * @author utkarsh
  *
  */
 @WebFilter("/rest/*")
