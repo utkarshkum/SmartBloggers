@@ -60,6 +60,8 @@
 				$scope.showEditForm = false;
 			});
 		};
+		
+		$rootScope.$broadcast('unload');
 	}
 	blogPostingApp.controller("UserController", UserControllerFunc);
 })();
