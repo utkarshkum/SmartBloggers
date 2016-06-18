@@ -23,9 +23,9 @@
 			 });
 		
 		$scope.logoutUser = function() {
-			$cookieStore.put("login_info", null);
+			$cookieStore.remove("login_info");
 			$scope.showlogoutlink = false;
-			$cookieStore.put("current_user", null);
+			$cookieStore.remove("current_user");
 			$scope.username = "";
 			$scope.showloading = false;
 			$rootScope.$broadcast('unload');
