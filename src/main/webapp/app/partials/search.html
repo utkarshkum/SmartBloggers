@@ -5,6 +5,9 @@
 				<br>
 		<button ng-click="searchBlog(tags)" class="btn btn-primary" style="float:right">Search</button>
 	</div>
+	<div class="page-header" ng-show="no_result_found" ng-init="no_result_found = false">
+			<h3>No result Found.</h3>
+		</div>
 	<div ng-show="searchblogsresults" ng-repeat="blog in blogs | filter:searchFor">
 		<div class="panel panel-primary" style="width: 90%">
 			<div class="panel-heading">

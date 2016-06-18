@@ -1,9 +1,11 @@
 (function() {
 	
 	function SearchControllerFunc($scope, $http, $log, $rootScope, $cookieStore, $location) {
+		
 		$scope.blogs = [];
 		$scope.blog = {};
 		$rootScope.searchblogsresults = false;
+		$rootScope.show_on_result_found_msg = false;
 
 		$scope.searchBlog = function(tags) {
 			
@@ -22,9 +24,16 @@
 				$scope.blogs = data;
 				$rootScope.$broadcast('unload');
 				$rootScope.searchblogsresults = true;
+				if ($scope.blogs.length == 0) {
+					$scope.no_result_found = true;
+				} else {
+					$scope.no_result_found = false;
+				}
 			}).error(function(data, status, headers, config) {
 				$rootScope.$broadcast('unload');
 			});
+			
+
 		};
 	}
 
