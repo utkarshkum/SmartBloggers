@@ -38,6 +38,13 @@ public class BlogDAO {
 	}
 	
 	public List<Blog> getBlogsWithtags(String tags) {
+		
+		if (tags == null) {
+			return null;
+		}
+		
+		tags = tags.toLowerCase();
+		
 		String[] tagsList = tags.split("[\\s+,+]");
 		Datastore dataStore = ServicesFactory.getMongoDB();
 		
@@ -67,6 +74,11 @@ public class BlogDAO {
 	
 	public void createBlog(Blog blog){
 		Datastore dataStore = ServicesFactory.getMongoDB();
+		
+		if (blog.getTag() != null) {
+			blog.setTag(blog.getTag().toLowerCase());
+		}
+		
 		dataStore.save(blog);
 	}
 	
