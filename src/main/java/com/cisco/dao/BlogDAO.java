@@ -38,17 +38,19 @@ public class BlogDAO {
 	}
 	
 	public List<Blog> getBlogsWithtags(String tags) {
-		String[] tagsList = tags.split(" ");
+		String[] tagsList = tags.split("[\\s+,+]");
 		Datastore dataStore = ServicesFactory.getMongoDB();
 		
 		List<Blog> bloglist = dataStore.find(Blog.class).asList();
 		List<Blog> filteredbloglist = new ArrayList<Blog>();
 		for(String tag:tagsList) {
-			Iterator itr = bloglist.iterator();
-			while(itr.hasNext()) {
-				Blog blog = (Blog) itr.next();
-				if(blog.getTag()!=null && blog.getTag().contains(tag)) {
-					filteredbloglist.add(blog);
+			if (tag.length() != 0) {
+				Iterator itr = bloglist.iterator();
+				while(itr.hasNext()) {
+					Blog blog = (Blog) itr.next();
+					if(blog.getTag()!=null && blog.getTag().contains(tag)) {
+						filteredbloglist.add(blog);
+					}
 				}
 			}
 		}
