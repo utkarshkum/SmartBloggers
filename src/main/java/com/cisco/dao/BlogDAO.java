@@ -1,8 +1,11 @@
 package com.cisco.dao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.Query;
@@ -49,20 +52,24 @@ public class BlogDAO {
 		Datastore dataStore = ServicesFactory.getMongoDB();
 		
 		List<Blog> bloglist = dataStore.find(Blog.class).asList();
-		List<Blog> filteredbloglist = new ArrayList<Blog>();
+		Set<Blog> setFilteredbloglist = new HashSet<Blog>();
+		List<Blog> listFilteredbloglist = new ArrayList<Blog>();
+		
 		for(String tag:tagsList) {
 			if (tag.length() != 0) {
 				Iterator itr = bloglist.iterator();
 				while(itr.hasNext()) {
 					Blog blog = (Blog) itr.next();
 					if(blog.getTag()!=null && blog.getTag().contains(tag)) {
-						filteredbloglist.add(blog);
+						if (setFilteredbloglist.add(blog)) {
+							listFilteredbloglist.add(blog);
+						}
 					}
 				}
 			}
 		}
-		
-		return filteredbloglist;
+				
+		return listFilteredbloglist;
 	}
 	
 	
