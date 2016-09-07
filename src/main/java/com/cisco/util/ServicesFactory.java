@@ -23,7 +23,7 @@ public class ServicesFactory {
 		}
 		
 		if(mongoTL.get()==null){
-			MongoClientURI connectionString = new MongoClientURI("mongodb://104.154.72.172:27017");
+			MongoClientURI connectionString = new MongoClientURI("mongodb://146.148.43.98:27017");
 			MongoClient mongoClient = new MongoClient(connectionString);	
 			Morphia morphia = new Morphia();
 			morphia.mapPackage("com.cisco.model");
